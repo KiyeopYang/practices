@@ -1,3 +1,5 @@
 .list {
-	background-color: black;
+	background-color: cornflowerblue;
+	max-width: 400px;
+	margin: auto;
 }

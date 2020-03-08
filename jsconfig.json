@@ -4,7 +4,8 @@
 		"paths": {
 			"components/*": ["./src/components/*"],
 			"containers/*": ["./src/containers/*"],
-			"pages/*": ["./src/pages/*"]
+			"pages/*": ["./src/pages/*"],
+			"libs/*": ["./src/libs/*"]
 		}
 	}
 }

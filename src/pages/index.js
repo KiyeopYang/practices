@@ -1,21 +1,30 @@
-import React, { useEffect, useLayoutEffect } from 'react';
+import React, { useEffect } from 'react';
+import useApi from 'libs/useApi';
+import Layout from 'components/Layout';
+import Post from 'containers/Post';
 import List from 'components/List';
-import Hook from 'components/Hook';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 export default () => {
-	const router = useRouter();
+	const [api, requestApi] = useApi();
 
-	useLayoutEffect(() => {
-		console.log(router.query);
-	}, [router.query]);
+	useEffect(() => {
+		requestApi({
+			url: '/',
+		});
+	}, []);
 	return (
-		<div>
-			test
-			<List />
-			<Hook />
-			<Link href="?test=1">link</Link>
-		</div>
+		<Layout loading={api.status === 'loading'}>
+			<h4>페이지 1</h4>
+			<Link href="/write">
+				<a>페이지 2</a>
+			</Link>
+			<div>
+				<Post />
+				<Post />
+				<Post />
+			</div>
+			<List items={['Text 1', 'Text 2', 'Text 3']} />
+		</Layout>
 	);
 };
